@@ -4,7 +4,6 @@ import morgan from 'morgan';
 
 import routes from './route';
 import {serverPort} from "./config";
-import {prepStatement} from "./db/db";
 
 const app = express();
 
@@ -15,5 +14,4 @@ app.use('/', routes);
 
 app.listen(serverPort, () => {
   console.log(`Running on port: ${serverPort}`);
-  prepStatement("SELECT * FROM users");
 });
