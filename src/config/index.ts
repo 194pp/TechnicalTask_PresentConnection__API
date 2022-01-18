@@ -1,13 +1,13 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-const db = {
+export const dbConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  db: process.env.DB_DB,
-  cluster: process.env.DB_CLUSTER,
-  params: process.env.DB_PARAMS,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT ? +process.env.DB_PORT : undefined,
 };
 
-export const mongoDbString = `mongodb+srv://${db.user}:${db.password}${db.cluster}${db.db}${db.params}`;
 export const serverPort = process.env.SERVER_PORT || 3334;
+export const bcryptSalt = process.env.BCRYPT_SALT;

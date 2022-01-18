@@ -2,8 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import {serverPort} from './config';
 import routes from './route';
+import {serverPort} from "./config";
+import {prepStatement} from "./db/db";
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(cors());
 app.use(morgan('common'));
 app.use('/', routes);
 
-
-app.listen(serverPort, async () => {
-  console.log(`App is running at port: ${serverPort}`);
+app.listen(serverPort, () => {
+  console.log(`Running on port: ${serverPort}`);
+  prepStatement("SELECT * FROM users");
 });
